@@ -21,11 +21,19 @@ const Container = styled.div`
     height: 100vh;
     position: relative; // Agregado para permitir el posicionamiento absoluto de los hijos
 `
-
-
+const BtnShowList = styled.button`
+    position: absolute;
+    left: 2px;
+    top: 7px;
+    padding: 0.5rem;
+    background-color: #2fd8ee;
+    border: none;
+    border-radius: 0 .2rem .2rem 0;
+    color: black;
+`
 const VideoList = styled.ul`
   position: absolute;
-  left: 7px;
+  left: 35px;
   top: 7px;
   list-style-type: none;
   padding: 0;
@@ -60,10 +68,15 @@ const VideoListItem = styled.li`
 const IPTVPlayer = () => {
     const [videoUrl, setVideoUrl] = useState(channels[0].url); // Estado para la URL del video IPTV
     const [isHovering, setIsHovering] = useState(false); // Estado para controlar la visibilidad de la lista
+    const [btnIsHovering, setBtnIsHovering] = useState(false);
     const [mouseActivity, setMouseActivity] = useState(true); // Estado para controlar la actividad del mouse
     const timerRef = useRef(null); // Referencia para el temporizador
-    
+    const [iconBtn,setIconBtn] = useState(">>")
 
+    const showList = (e) => {
+        setIconBtn(!isHovering ? "<<" : ">>");
+        setIsHovering(!isHovering)
+    }
     const handleVideoSelect = (url) => {
         setVideoUrl(url);
         setIsHovering(false); // Oculta la lista después de seleccionar un video
@@ -72,7 +85,7 @@ const IPTVPlayer = () => {
     const handleMouseActivity = () => {
         setMouseActivity(true);
         clearTimeout(timerRef.current);
-        timerRef.current = setTimeout(() => setMouseActivity(false), 2000); // Oculta la lista después de 2 segundos de inactividad
+        timerRef.current = setTimeout(() => setMouseActivity(false), 3000); // Oculta la lista después de 3 segundos de inactividad
     };
 
     useEffect(() => {
@@ -85,12 +98,12 @@ const IPTVPlayer = () => {
     }, []);
 
     const handlers = useSwipeable({
-        onSwipedLeft: () => setIsHovering(false), // Oculta la lista cuando se desliza hacia la izquierda
-        onSwipedRight: () => setIsHovering(true), // Muestra la lista cuando se desliza hacia la derecha
+        onSwipedLeft: () => setBtnIsHovering(false), // Oculta la lista cuando se desliza hacia la izquierda
+        onSwipedRight: () => setBtnIsHovering(true), // Muestra la lista cuando se desliza hacia la derecha
     });
 
     return (
-        <Container {...handlers} onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
+        <Container {...handlers} onMouseEnter={() => setBtnIsHovering(true)} onMouseLeave={() => setBtnIsHovering(false)}>
             <CardView>
                 <ReactPlayer
                     url={videoUrl}
@@ -102,15 +115,20 @@ const IPTVPlayer = () => {
 
             </CardView>
 
-            {isHovering && mouseActivity && (
-                <VideoList>
-                    {channels.map((channel, index) => (
-                        <VideoListItem key={index} onClick={() => handleVideoSelect(channel.url)}>
-                            {channel.name}
-                        </VideoListItem>
-                    ))}
-                </VideoList>
+            {btnIsHovering && mouseActivity && (
+                <BtnShowList onClick={showList}>{iconBtn}</BtnShowList>
             )}
+            {
+                isHovering && (
+                    <VideoList>
+                        {channels.map((channel, index) => (
+                            <VideoListItem key={index} onClick={() => handleVideoSelect(channel.url)}>
+                                {channel.name}
+                            </VideoListItem>
+                        ))}
+                    </VideoList>
+                )
+            }
 
         </Container>
     );
