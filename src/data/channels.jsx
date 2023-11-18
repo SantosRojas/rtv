@@ -16,8 +16,20 @@ const Channels = [
         "url":"https://d3krdjs7is1y42.cloudfront.net/ATVmas/74ee4169b59e6f987ae3d77317309109.sdp/playlist.m3u8"
     },
     {   
+        "name":"TNT SPORTS",
+        "url":"https://glxlmn026c.singularcdn.net.br/playout_01/playlist.m3u8"
+    },
+    {   
         "name":"Las Estrellas",
         "url":"https://channel01.akamaized.net/hls/live/2022749/event01/index.m3u8"
+    },
+    {   
+        "name":"Cinema",
+        "url":"https://byecableiptvnew3.ddns.net/ENVIVOCINEMA/index.m3u8"
+    },
+    {   
+        "name":"Senal Peru TV",
+        "url":"https://livestream.perucast.com/hls/stream.m3u8"
     },
     {   
         "name":"Cartoon Network",
@@ -143,7 +155,46 @@ const Channels = [
         "name":"Cine Canal",
         "url":"https://6362ca6f1fc28.streamlock.net:443/cinecanal/cinecanal/playlist.m3u8"
     },
-
+    {   
+        "name":"Cine Sony",
+        "url":"https://6362ca6f1fc28.streamlock.net:443/cinecanal/cinecanal/playlist.m3u8"
+    },
+    {   
+        "name":"Cinerama",
+        "url":"https://5d00db0e0fcd5.streamlock.net/7062/7062/playlist.m3u8"
+    },
+    {   
+        "name":"Claro Tv",
+        "url":"https://vsrv2.az-streamingserver.com:3960/live/claroteledomlive.m3u8"
+    },
+    {   
+        "name":"Claro Vision",
+        "url":"https://vsrv2.az-streamingserver.com:3057/live/clarovisiontvlive.m3u8"
+    },
+    {   
+        "name":"Genios TV",
+        "url":"https://live.obslivestream.com/geniostvmux/index.m3u8"
+    },
+    {   
+        "name":"Platzi",
+        "url":"https://mdstrm.com/live-stream-playlist/629a63ae8df27c082901f78b.m3u8"
+    },
+    {   
+        "name":"Sony Novelas",
+        "url":"https://a89829b8dca2471ab52ea9a57bc28a35.mediatailor.us-east-1.amazonaws.com/v1/master/0fb304b2320b25f067414d481a779b77db81760d/CanelaTV_SonyCanalNovelas/playlist.m3u8"
+    },
+    {   
+        "name":"Golden Plus",
+        "url":"https://linear-410.frequency.stream/dist/vix/410/hls/master/playlist.m3u8"
+    },
+    {   
+        "name":"Televisa",
+        "url":"https://ythls.armelin.one/channel/UCRujF_YxVVFmTRWURQH-Cww.m3u8"
+    },
+    {   
+        "name":"Golden Premier",
+        "url":"https://linear-411.frequency.stream/dist/vix/411/hls/master/playlist.m3u8"
+    }
     
 ]
 
